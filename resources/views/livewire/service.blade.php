@@ -35,6 +35,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">نوع سرویس</th>
                     <th scope="col">نام سرویس</th>
                     <th scope="col">تاریخ سررسید</th>
                     <th scope="col">کد اتصال</th>
@@ -47,6 +48,7 @@
                 @foreach ($services as $service)
                     <tr>
                         <th scope="row">{{ $counter++ }}</th>
+                        <td>{{ $service->service_mod->name }}</td>
                         <td>{{ $service->name }}</td>
                         <td>{{ $service->deadline }}</td>
                         <td>{{ $service->uuid }}</td>

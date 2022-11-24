@@ -26,6 +26,12 @@ $viewMenu = function ($menus) use (&$viewMenu, $permissions) {
             <span class="title">سرویس ها</span>
         </a>
     </li>
+    <li class="menu-item {{ Route::is('ladmin.transactions.index') ? 'active' : null }}" id="menu-dashboard">
+        <a href="{{ route('ladmin.transactions.index') }}">
+            <i class="fa fa-solid fa-usd"></i>
+            <span class="title">تراکنش ها</span>
+        </a>
+    </li>
     <li class="menu-item {{ Route::is('ladmin.document.index') ? 'active' : null }}" id="menu-dashboard">
         <a href="{{ route('ladmin.document.index') }}">
             <i class="fa fa-solid fa-file"></i>

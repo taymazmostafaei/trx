@@ -13,4 +13,8 @@ class Service extends Model
     public function admin(){
         return $this->belongsTo(Admin::class);
     }
+
+    public function service_mod(){
+        return $this->belongsTo(ServiceMod::class);
+    }
 }

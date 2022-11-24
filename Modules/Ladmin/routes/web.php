@@ -12,6 +12,7 @@ use Modules\Ladmin\Http\Controllers\ProfileController;
 use Modules\Ladmin\Http\Controllers\RoleController;
 use Modules\Ladmin\Http\Controllers\ServiceController;
 use Modules\Ladmin\Http\Controllers\SystemLogController;
+use Modules\Ladmin\Http\Controllers\TransactionController;
 use Modules\Ladmin\Http\Controllers\UserActivityController;
 
 /*
@@ -29,6 +30,7 @@ ladmin()->route(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/', DashboardController::class)->name('index');
     Route::resource('/service', ServiceController::class)->only(['index']);
+    Route::resource('/transactions', TransactionController::class)->only(['index']);
     Route::resource('/document', DocumentController::class)->only(['index']);
     Route::resource('/notification', NotificationController::class)->only(['index', 'show', 'store']);
     Route::resource('/admin', AdminController::class)->except(['destroy', 'show']);
