@@ -2,6 +2,8 @@
 
 namespace Modules\Ladmin\Models;
 
+use App\Models\Debt;
+use App\Models\Inbounds;
 use App\Models\Service;
 use Hexters\Ladmin\LadminAccount;
 use Hexters\Ladmin\LadminLoggable;
@@ -64,5 +66,13 @@ class Admin extends Authenticatable
 
     public function services(){
         return $this->hasMany(Service::class);
+    }
+
+    public function inbounds(){
+        return $this->hasOne(Inbounds::class);
+    }
+
+    public function debts(){
+        return $this->hasMany(Debt::class);
     }
 }

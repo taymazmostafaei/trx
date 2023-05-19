@@ -6,6 +6,8 @@ use Hexters\Ladmin\Events\LadminLoginEvent;
 use Hexters\Ladmin\Events\LadminLogoutEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Modules\Ladmin\Http\Controllers\Controller;
 
 class LoginController extends Controller
@@ -39,6 +41,11 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             event(new LadminLoginEvent(auth()->guard( config('ladmin.auth.guard') )->user()));
+
+            //authenticate xui
+            $response = Http::post('http://159.223.249.93:43210/login', ['username' => 'admin', 'password' => 'admin']);
+            $session = $response->cookies()->getCookieByName('session')->getValue();
+            Cache::add('xuisession', $session);
 
             return redirect()->route('ladmin.index');
         }

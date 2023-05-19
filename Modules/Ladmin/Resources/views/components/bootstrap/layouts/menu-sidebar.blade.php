@@ -20,16 +20,16 @@ $viewMenu = function ($menus) use (&$viewMenu, $permissions) {
         </li>
     @endif
     {!! $viewMenu( ladmin()->menu()->all(), false ) !!}
-    <li class="menu-item {{ Route::is('ladmin.service.index') ? 'active' : null }}" id="menu-dashboard">
-        <a href="{{ route('ladmin.service.index') }}">
+    <li class="menu-item {{ Route::is('ladmin.clients.index') ? 'active' : null }}" id="menu-dashboard">
+        <a href="{{ route('ladmin.clients.index') }}">
             <i class="fa fa-solid fa-cogs"></i>
-            <span class="title">سرویس ها</span>
+            <span class="title">مشتریان</span>
         </a>
     </li>
-    <li class="menu-item {{ Route::is('ladmin.transactions.index') ? 'active' : null }}" id="menu-dashboard">
-        <a href="{{ route('ladmin.transactions.index') }}">
+    <li class="menu-item {{ Route::is('ladmin.debts.index') ? 'active' : null }}" id="menu-dashboard">
+        <a href="{{ route('ladmin.debts.index') }}">
             <i class="fa fa-solid fa-usd"></i>
-            <span class="title">تراکنش ها</span>
+            <span class="title">بدهی ها</span>
         </a>
     </li>
     <li class="menu-item {{ Route::is('ladmin.document.index') ? 'active' : null }}" id="menu-dashboard">

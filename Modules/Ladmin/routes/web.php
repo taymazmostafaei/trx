@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Ladmin\Http\Controllers\AdminController;
 use Modules\Ladmin\Http\Controllers\Auth\LoginController;
+use Modules\Ladmin\Http\Controllers\ClientsController;
 use Modules\Ladmin\Http\Controllers\DashboardController;
+use Modules\Ladmin\Http\Controllers\DebtController;
 use Modules\Ladmin\Http\Controllers\DocumentController;
 use Modules\Ladmin\Http\Controllers\GroupSearchController;
 use Modules\Ladmin\Http\Controllers\NotificationController;
@@ -31,6 +33,8 @@ ladmin()->route(function () {
     Route::get('/', DashboardController::class)->name('index');
     Route::resource('/service', ServiceController::class)->only(['index']);
     Route::resource('/transactions', TransactionController::class)->only(['index']);
+    Route::resource('/clients', ClientsController::class)->only(['index']);
+    Route::resource('/debts', DebtController::class)->only(['index']);
     Route::resource('/document', DocumentController::class)->only(['index']);
     Route::resource('/notification', NotificationController::class)->only(['index', 'show', 'store']);
     Route::resource('/admin', AdminController::class)->except(['destroy', 'show']);
