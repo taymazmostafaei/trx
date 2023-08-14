@@ -9,6 +9,8 @@ use Modules\Ladmin\Models\Admin;
 class Inbounds extends Model
 {
 
+    protected $table = 'Inbounds';
+
     protected $casts = [
         'access' => 'json'
     ];

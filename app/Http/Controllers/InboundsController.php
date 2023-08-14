@@ -28,7 +28,7 @@ class InboundsController extends Controller
             $data = json_decode(Http::withHeaders([
                 'Cookie' => 'session=' . Cache::get('xuisession'),
                 'Accept' => 'application/json',
-            ])->get('http://159.223.249.93:43210/xui/API/inbounds/get/' . $inbound)->body());
+            ])->get('http://'. env('XUI_IP') .':43210/xui/API/inbounds/get/' . $inbound)->body());
 
             $config = json_decode($data->obj->settings);
             $streamSettings = json_decode($data->obj->streamSettings);
@@ -54,7 +54,7 @@ class InboundsController extends Controller
     public function createConnectLink($id, $port, $remark, $name, $sid, $sni, $pbk)
     {
 
-        $link = "vless://$id@route.taymaz.online:$port?type=grpc&serviceName=&security=reality&fp=firefox&pbk=$pbk&sni=$sni&sid=$sid#$remark-$name";
+        $link = "vless://$id@ps.taymaz.online:$port?type=grpc&serviceName=&security=reality&fp=firefox&pbk=$pbk&sni=$sni&sid=$sid#$remark-$name";
 
         return $link;
     }
@@ -70,7 +70,7 @@ class InboundsController extends Controller
             'Cookie' => 'session=' . Cache::get('xuisession'),
             'Accept' => 'application/json',
         ])
-            ->post("http://159.223.249.93:43210/xui/API/inbounds/$inbound/delClient/$id");
+            ->post("http://". env('XUI_IP') .":43210/xui/API/inbounds/$inbound/delClient/$id");
 
         $debt = Debt::where('client_id', $id)->first();
         $debt->delete();
@@ -99,7 +99,7 @@ class InboundsController extends Controller
         $result = Http::withHeaders([
             'Cookie' => 'session=' . Cache::get('xuisession'),
             'Accept' => 'application/json',
-        ])->post("http://159.223.249.93:43210/xui/API/inbounds/addClient", $postData);
+        ])->post("http://". env('XUI_IP') .":43210/xui/API/inbounds/addClient", $postData);
 
         $debt = new Debt([
             'admin_id' => $user->id,
@@ -130,7 +130,7 @@ class InboundsController extends Controller
         $result = Http::withHeaders([
             'Cookie' => 'session=' . Cache::get('xuisession'),
             'Accept' => 'application/json',
-        ])->post("http://159.223.249.93:43210/xui/API/inbounds/updateClient/$uuId", $postData);
+        ])->post("http://". env('XUI_IP') .":43210/xui/API/inbounds/updateClient/$uuId", $postData);
 
         return true;
     }

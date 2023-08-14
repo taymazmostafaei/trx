@@ -43,7 +43,7 @@ class LoginController extends Controller
             event(new LadminLoginEvent(auth()->guard( config('ladmin.auth.guard') )->user()));
 
             //authenticate xui
-            $response = Http::post('http://159.223.249.93:43210/login', ['username' => 'admin', 'password' => 'admin']);
+            $response = Http::post('http://'. env('XUI_IP') .':43210/login', ['username' => 'admin', 'password' => 'admin']);
             $session = $response->cookies()->getCookieByName('session')->getValue();
             Cache::add('xuisession', $session);
 
